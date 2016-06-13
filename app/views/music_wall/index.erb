@@ -2,8 +2,11 @@
   <div class = "song">
     <p> Title: <%=song.title%> </p>
     <p> Artist: <%=song.artist%> </p>
-    <p> Url: <%=song.url%> <%if song.url%> </p>
+    <p> Url: <a href="<%=song.url%>"><%=song.url%></a></p>  
     <p> Created at: <%=song.created_at%> </p>
   </div>
+  -------------------------
 
 <% end %>
+<br />
+<a href = "/music_wall/new"> Post a new song! </a> </p>
