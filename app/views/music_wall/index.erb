@@ -1,0 +1,9 @@
+<% @songs.each do |song| %>
+  <div class = "song">
+    <p> Title: <%=song.title%> </p>
+    <p> Artist: <%=song.artist%> </p>
+    <p> Url: <%=song.url%> <%if song.url%> </p>
+    <p> Created at: <%=song.created_at%> </p>
+  </div>
+
+<% end %>
