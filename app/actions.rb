@@ -17,6 +17,7 @@
 
   get '/music_wall' do
     @songs = Song.all.sort_by { |s| s.votes.count }
+    @songs.reverse!
     erb :'music_wall/index'
   end
 

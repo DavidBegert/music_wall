@@ -1,7 +1,7 @@
 <h1><%= @song.title %></h1>
 
 <p>
-  Author: <%= @song.artist %>
+  Artist: <%= @song.artist %>
 </p>
 
 <p>
@@ -9,7 +9,17 @@
 </p>
 <p>
   Number of Upvotes: <%=@song.votes.count%>
-
+</p>
+<p>
+  Posted By: <%=@song.user.username%>
+</p>
+<%unless @song.url.empty? %>
+  <p>
+    Url: <a href="<%=@song.url%>"><%=@song.url%></a> 
+  </p>
+<% end %>
+<p>
+  Created At: <%=@song.created_at%>
 </p>
 
 <hr/>
