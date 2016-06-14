@@ -1,12 +1,14 @@
 <% @songs.each do |song| %>
   <div class = "song">
-    <p> Title: <%=song.title%> </p>
+    <p> Title: <a href="music_wall/<%=song.title%>"><%=song.title%> </a></p>
     <p> Artist: <%=song.artist%> </p>
     <p> Url: <a href="<%=song.url%>"><%=song.url%></a></p>  
+    <p> Upvotes: <%=song.votes.count%> </p>
     <p> Created at: <%=song.created_at%> </p>
   </div>
   -------------------------
 
 <% end %>
 <br />
+
 <a href = "/music_wall/new"> Post a new song! </a> </p>

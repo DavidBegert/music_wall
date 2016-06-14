@@ -6,19 +6,153 @@
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/stylesheets/normalize.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
   <!--
     application.css is where you put your styles
   -->
-  <link rel="stylesheet" href="/stylesheets/application.css">
+  <link rel="stylesheet" href="/css/bootstrap-responsive.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascript/application.js"></script>
-
-  <title></title>
+  <title>Songah</title>
+  <style>
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+        .connect      {
+    width:10%;
+    margin-right:11%;
+    margin-left:11%;
+    float:left;
+    
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%);
+    }
+  .connect:hover  {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+    }
+    .footerbox {
+    margin:2.5%;
+    width:20%;
+    float:left;
+    }
+  .footerbox a {
+    text-decoration:none;
+    color:#D6F8D6;
+    }
+  .footerbox a:hover {
+    color:#E75A7C;
+    }
+  </style>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SongAH</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
+          <li><a href="/music_wall">Song Wall</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Songs <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <% @songs = Song.all.sort_by { |s| s.title }%>
+              <% @songs.each do |song| %>
+                <li><a href="/music_wall/<%=song.title%>"><%= "#{song.title.capitalize} (#{song.artist})" %></a></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <% if logged_in? %>
+          <ul class="nav navbar-nav navbar-right">
+          <li>Welcome</li>
+          <li> David!</li>
+          </ul>
+        <% else %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="/login">Log In</a></li>
+          </ul>
+        <%end%>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
   <%= yield %>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script> window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"> <\/script>') </script>
+  <script src="/js/bootstrap.min.js"> </script>
+
+
+  <footer class="container-fluid text-center">
+
+  <div class="footerbox">
+  SongAH
+  </div><!--closefooterbox-->
+
+  <div class="footerbox">
+  <a href="#">FAQ</a></div><!--closefooterbox-->
+
+  <div class="footerbox">
+  CONTACT<br/>
+  dbegert@usc.edu<br/>
+  </div><!--closefooterbox-->
+
+  <div class="footerbox">
+  CONNECT<br/><br/>
+  <a href="https://www.facebook.com"> 
+        <img  src="/img/fbLogo.png"
+            class="connect"/>
+      </a>
+      <a href="http://twitter.com"> 
+        <img  src="/img/twitterLogo.jpg"
+            class="connect"/>
+      </a>
+      <a href="http://instagram.com">
+        <img  src="/img/instaLogo.jpg"
+            class="connect"/>
+      </a>
+  </div><!--closefooterbox-->
+
+  </footer>
 </body>
 </html>
 

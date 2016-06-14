@@ -3,6 +3,8 @@ require 'bundler/setup'
 
 require 'active_support/all'
 
+require 'digest/sha1'
+
 # Load Sinatra Framework (with AR)
 require 'sinatra'
 require 'sinatra/activerecord'

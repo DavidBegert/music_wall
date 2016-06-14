@@ -1,0 +1,16 @@
+<h1><%= @song.title %></h1>
+
+<p>
+  Author: <%= @song.artist %>
+</p>
+
+<p>
+  <a href="<%= @song.url %>"> <%= @song.url %> </a>
+</p>
+<p>
+  Number of Upvotes: <%=@song.votes.count%>
+
+</p>
+
+<hr/>
+<a href="/music_wall">Back to All Songs</a>
