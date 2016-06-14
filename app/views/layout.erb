@@ -90,7 +90,7 @@
             <ul class="dropdown-menu">
               <% @songs = Song.all.sort_by { |s| s.title }%>
               <% @songs.each do |song| %>
-                <li><a href="/music_wall/<%=song.title%>"><%= "#{song.title.capitalize} (#{song.artist})" %></a></li>
+                <li><a href="/music_wall/<%=song.id%>"><%= "#{song.title.capitalize} (#{song.artist})" %></a></li>
               <% end %>
             </ul>
           </li>
@@ -103,7 +103,7 @@
         </form>
         <% if logged_in? %>
           <ul class="nav navbar-nav navbar-right">
-        Welcome <%=@user.username%>! <br/> <a href="/logout"> Logout? </a>
+        Welcome, <%=@user.username%>! <br/> <a href="/logout"> <span style="padding-left: 26%; font-size: 120%">Logout</span> </a>
           </ul>
         <% else %>
           <ul class="nav navbar-nav navbar-right">

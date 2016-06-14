@@ -1,0 +1,9 @@
+.review_post {
+  width: 500px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #b3ccff;
+  font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+}

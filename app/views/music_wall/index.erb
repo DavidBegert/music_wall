@@ -1,16 +1,20 @@
+<link rel="stylesheet" href="/css/comment_blocks.css">
+<% if flash[:info] %>
+<%=flash[:info]%>
+<%end%>
 <% @songs.each do |song| %>
-  <div class = "song">
-    <p> Title: <a href="music_wall/<%=song.title%>"><%=song.title%> </a></p>
+  <div class = "review_post">
+    <p> Title: <a href="music_wall/<%=song.id%>"><%=song.title%> </a></p>
     <p> Artist: <%=song.artist%> </p>
     <%unless song.url.empty? %>
       <p> Url: <a href="<%=song.url%>"><%=song.url%></a> </p>  
     <% end %>
-    <p> Upvotes: <%=song.votes.count%> 
-    <a href="/vote/upvote/<%=song.id%>"><img style="margin-left: 10%; width: 1.5%;" src="/img/upvote.jpg" /> </a> </p>
+    <p> <span style="margin-left: 71.5%; font-size: 120%"><%=song.votes.count%> </span>
+    <a href="/vote/upvote/<%=song.id%>"><img style="margin-left: 70%; width: 5%;" src="/img/upvote.jpg" /> </a> </p>
     <p> Posted by: <%=song.user.username%> </p>
     <p> Created at: <%=song.created_at%> </p>
   </div>
-  -------------------------
+  <br/>
 
 <% end %>
 <br />

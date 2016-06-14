@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/comment_blocks.css">
 <h1><%= @song.title %></h1>
 
 <p>
@@ -21,3 +22,51 @@
 
 <hr/>
 <a href="/music_wall">Back to All Songs</a>
+<br/>
+<hr/>
+
+<%if @review && @review.errors.any? %>
+  <h1> There were some errors: </h1>
+  <ul>
+    <% @review.errors.full_messages.each do |error| %>
+      <li> <%=error%> </li>
+    <% end %>
+  </ul>
+<% end %>
+<% if current_user && !current_user.has_already_reviewed?(@song) %>
+<form method="POST" action="/music_wall/review/new/<%=@song.id%>" style="text-align: center;">
+  <div>
+    <label> Leave a Review: </label> <br/>
+    <textarea name="post" rows="5" cols="50">
+    </textarea>
+  </div> <br/>
+  <select name = "rating">
+    <option value ""> </option>
+    <option value = "1"> 1 </option>
+    <option value = "2"> 2 </option>
+    <option value = "3"> 3 </option>
+    <option value = "4"> 4 </option>
+    <option value = "5"> 5 </option>
+  </select> <br/> <br/>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+
+</form>
+<%end%>
+
+<h2 style="text-align: center;"> Reviews </h2>
+<hr/>
+<%if @song.reviews %>
+  <% @song.reviews.each do |review| %>
+   <div class="review_post">
+    <p> <%=review.post%> - Rating: <%= review.rating %>
+    <% if @user && review.user_id == @user.id %>
+    <a href="/delete/review/<%=review.id%>"> <img src="/img/delete.jpg" style="width: 5%;" align="right"> </a> 
+    <%end%>
+    </p>
+    <em> Posted By: <%=review.user.username%> </em>
+   </div>
+  <%end%>
+ <%end%>
+
