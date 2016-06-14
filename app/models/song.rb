@@ -1,5 +1,6 @@
 class Song < ActiveRecord::Base
   has_many :votes
+  belongs_to :user
 
   validates :title, :artist, presence: true
   validate :cant_be_same_song

@@ -2,8 +2,10 @@
   <div class = "song">
     <p> Title: <a href="music_wall/<%=song.title%>"><%=song.title%> </a></p>
     <p> Artist: <%=song.artist%> </p>
-    <p> Url: <a href="<%=song.url%>"><%=song.url%></a></p>  
-    <p> Upvotes: <%=song.votes.count%> </p>
+    <p> Url: <a href="<%=song.url%>"><%=song.url%></a> </p>  
+    <p> Upvotes: <%=song.votes.count%> 
+    <a href="/vote/upvote/<%=song.id%>"><img style="margin-left: 10%; width: 1.5%;" src="/img/upvote.jpg" /> </a> </p>
+    <p> Posted by: <%=song.user.username%> </p>
     <p> Created at: <%=song.created_at%> </p>
   </div>
   -------------------------
