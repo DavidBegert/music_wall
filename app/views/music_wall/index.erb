@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/comment_blocks.css">
 <% if flash[:info] %>
-<%=flash[:info]%>
+<p style="color: red; padding-left: 1%;"><%=flash[:info]%> </p>
 <%end%>
 <% @songs.each do |song| %>
   <div class = "review_post">

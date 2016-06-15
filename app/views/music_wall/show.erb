@@ -53,6 +53,10 @@
   </div>
 
 </form>
+<%elsif current_user %>
+  <p style="color: red; text-align: center;"> You can only write one review per song </p>
+<% else %>
+  <p style="color: red; text-align: center;"> You must be logged in to write a review </p>
 <%end%>
 
 <h2 style="text-align: center;"> Reviews </h2>

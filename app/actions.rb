@@ -29,8 +29,8 @@ get '/music_wall/new' do
   if logged_in?
     erb :'music_wall/new'
   else
-    #TODO put in a message saying you must be logged in to post a new song
-    redirect '/'
+    flash[:info] = "You must be logged in to post a new song!"
+    redirect '/music_wall'
   end
 end
 
@@ -106,7 +106,7 @@ get "/vote/upvote/:song_id" do  #post to /songs/vote have hidden value that refe
       redirect '/music_wall'
     end
   else
-    session[:login] = "You must be logged in to vote!"
+    flash[:info] = "You must be logged in to vote!"
     redirect '/music_wall'
   end
 end

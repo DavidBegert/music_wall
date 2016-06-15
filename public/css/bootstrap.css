@@ -6760,4 +6760,14 @@ button.close {
   }
 }
 
+.form_container {
+  padding-left: 2%;
+  width: 500px;
+  clear: both;
+}
+.form_container input {
+  width: 100%;
+  clear: both;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

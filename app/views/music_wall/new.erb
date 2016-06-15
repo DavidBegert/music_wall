@@ -1,29 +1,29 @@
 <%if @song.errors.any? %>
-  <h1> There were some errors: </h1>
   <ul>
     <% @song.errors.full_messages.each do |error| %>
-      <li> <%=error%> </li>
+      <li style="color: red;"> <%=error%> </li>
     <% end %>
   </ul>
 <% end %>
 
 
-
-<form action="/music_wall" method="post"> 
-  <div>
-    <label> Title: </label>
-    <input type="text" name="title" value="<%=@song.title%>"/>
-  </div>
-  <div>
-    <label> Artist: </label>
-    <input type="text" name="artist" value="<%=@song.artist%>" />
-  </div>
-  <div>
-    <label> URL: </label>
-    <input type="url" name="url" value="<%=@song.url%>"/>
-  </div>
-  <div>
-    <input type="submit" value="Submit" />
-  </div>
-
-</form>
+<div class="form_container">
+  <form action="/music_wall" method="post"> 
+    <div>
+      <label> Title: </label>
+      <input type="text" name="title" value="<%=@song.title%>"/>
+    </div>
+    <div>
+      <label> Artist: </label>
+      <input type="text" name="artist" value="<%=@song.artist%>" />
+    </div>
+    <div>
+      <label> URL: </label>
+      <input type="url" name="url" value="<%=@song.url%>"/>
+    </div> <br/>
+    <div>
+      <input style="width: 20%; border-radius: 1%;" type="submit" value="Submit" />
+    </div>
+  </form>
+</div>
+<br/><br/>
